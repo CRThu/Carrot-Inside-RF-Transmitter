@@ -5,9 +5,24 @@
 clc
 close all
 
-% x^MSB + ... + x^LSB + 1
-GEN_POLY = [1 0 0 1 0 0 0 1];           % S(x) = x^7 + x^4 + 1
+% generate Primitive polynomial
+%primpoly(16,5)
 
+% Configure Primitive polynomial
+GEN_PLOY_NUM = 145;                     % (145) S(x)=D^7+D^4+1
+%GEN_PLOY_NUM = 65593;                   % (65593) S(x)=D^16+D^5+D^4+D^3+1
+if isprimitive(GEN_PLOY_NUM)
+    disp('Primitive polynomial check passed.');
+else
+    disp('Primitive polynomial check failed.');
+end
+
+GEN_POLY = de2bi(GEN_PLOY_NUM,'left-msb');
+
+% D^MSB + ... + D^LSB + 1
+%GEN_POLY = [1 0 0 1 0 0 0 1];           % (145) S(x)=D^7+D^4+1
+
+% Configure Data Path
 DATA_PATH = './data/';
 %FILE_IN = 'test_string_40bits.txt';	% Simple Cases
 FILE_IN = 'test_string_1512bits.txt';	% General Cases
@@ -117,22 +132,30 @@ else
     disp('Decrypt Fail.')
 end
 
-% s_out hex file output
-s_out_bits_mat = reshape(double(s_out).',8,seq_len/8).';
-s_out_hex = bi2de(s_out_bits_mat,'left-msb');
-fid = fopen([DATA_PATH,'s_out_hex_',FILE_IN], 'w+');
-if fid == -1
-    disp('fopen failed');
-else
-    for i=1:length(s_out_hex)
-        % write data
-        fprintf(fid,'%02X ',s_out_hex(i));
-        % \r\n
-        if mod(i-1,16) == 15
-            fprintf(fid,'\r\n');
+% write s_in hex file
+write_hex_file(s_in,seq_len,[DATA_PATH,'s_in_hex_',FILE_IN]);
+
+% write s_out hex file
+write_hex_file(s_out,seq_len,[DATA_PATH,'s_out_hex_',FILE_IN]);
+
+% write hex file function
+function write_hex_file(bits,len,path)
+    bits_mat = reshape(double(bits).',8,len/8).';
+    bits_hex = bi2de(bits_mat,'left-msb');
+    fid = fopen(path,'w+');
+    if fid == -1
+        disp('fopen failed');
+    else
+        for i=1:length(bits_hex)
+            % write data
+            fprintf(fid,'%02X ',bits_hex(i));
+            % \r\n
+            if mod(i-1,16) == 15
+                fprintf(fid,'\r\n');
+            end
         end
+        fclose(fid);
     end
-    fclose(fid);
 end
 
 % EOF
