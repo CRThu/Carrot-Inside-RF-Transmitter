@@ -24,24 +24,26 @@ module scrambler_tb;
     
     reg reset_n;
     reg clk_in;
-    reg data_vaild;
     reg data_in;
+    reg data_in_valid;
     
     wire data_out;
+    wire data_out_valid;
     
     scrambler scrambler_inst(
-        .reset_n    (reset_n),
-        .clk_in     (clk_in),
-        .data_vaild (data_vaild),
-        .data_in    (data_in),
-        .data_out   (data_out));
+        .reset_n        (reset_n),
+        .clk_in         (clk_in),
+        .data_in        (data_in),
+        .data_in_valid  (data_in_valid),
+        .data_out       (data_out),
+        .data_out_valid (data_out_valid));
     
     initial
     begin
         reset_n = 1'b1;
         clk_in = 1'b0;
-        data_vaild = 1'b0;
         data_in = 1'b0;
+        data_in_valid = 1'b0;
     end
     
     always
@@ -56,17 +58,21 @@ module scrambler_tb;
         #30 reset_n = 1'b0;
         #30 reset_n = 1'b1;
         
-        #6 data_vaild = 1'b0;
+        #6 data_in_valid = 1'b0;
         
         for(i=0;i<256;i=i+1)
         begin
-            #7 data_vaild = 1'b1;
+            #7 data_in_valid = 1'b1;
             data_in = data_in_vec[256-1-i];
             
-            #3 data_vaild = 1'b0;
+            #3 data_in_valid = 1'b0;
             data_out_vec[256-1-i] = data_out;
+            
+            #10 data_in_valid = 1'b0;
+            data_in = 1'b1;
         end
         
+        // 4f9eb96a4723bc4ea686c245f75bfb967c97fe6d2950665dcca31c34f9a9349f
         $display("%h",data_out_vec);
         $write("\n");
         
