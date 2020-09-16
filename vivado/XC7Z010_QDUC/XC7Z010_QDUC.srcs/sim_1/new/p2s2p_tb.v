@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 1ns
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -37,22 +37,20 @@ module p2s2p_tb;
     assign #1 data_s_in_valid = data_s_out_valid;
     
     p2s p2s_inst(
-    .reset_n        (reset_n),
-    .clk_in         (clk_in),
-    .data_in        (data_p_in),
-    .data_in_valid  (data_p_in_valid),
-    .data_out       (data_s_out),
-    .data_out_valid (data_s_out_valid)
-    );
+        .reset_n        (reset_n),
+        .clk_in         (clk_in),
+        .data_in        (data_p_in),
+        .data_in_valid  (data_p_in_valid),
+        .data_out       (data_s_out),
+        .data_out_valid (data_s_out_valid));
     
     s2p s2p_inst(
-    .reset_n        (reset_n),
-    .clk_in         (clk_in),
-    .data_in        (data_s_in),
-    .data_in_valid  (data_s_in_valid),
-    .data_out       (data_p_out),
-    .data_out_valid (data_p_out_valid)
-    );
+        .reset_n        (reset_n),
+        .clk_in         (clk_in),
+        .data_in        (data_s_in),
+        .data_in_valid  (data_s_in_valid),
+        .data_out       (data_p_out),
+        .data_out_valid (data_p_out_valid));
 
     initial
     begin

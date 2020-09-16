@@ -72,7 +72,10 @@ module scrambler_tb;
             data_in = 1'b1;
         end
         
-        // 4f9eb96a4723bc4ea686c245f75bfb967c97fe6d2950665dcca31c34f9a9349f
+        // raw:416C7068610D0A427261766F0D0A436861726C69650D0A44656C74610D0A4563
+        // 145:4f9eb96a4723bc4ea686c245f75bfb967c97fe6d2950665dcca31c34f9a9349f
+        // 65593:55ef2156fec97fc20c3dbb2447e5665b9b71c4bb309806eb09fc8fe514e28f36
+        
         $display("%h",data_out_vec);
         $write("\n");
         
