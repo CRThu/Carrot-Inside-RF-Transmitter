@@ -136,7 +136,7 @@ end
 write_hex_file(s_in,seq_len,[DATA_PATH,'s_in_hex_',FILE_IN]);
 
 % write s_out hex file
-write_hex_file(s_out,seq_len,[DATA_PATH,'s_out_hex_',FILE_IN]);
+write_hex_file(s_out,seq_len,[DATA_PATH,'s_out_hex_',num2str(GEN_PLOY_NUM),'_',FILE_IN]);
 
 % write hex file function
 function write_hex_file(bits,len,path)
