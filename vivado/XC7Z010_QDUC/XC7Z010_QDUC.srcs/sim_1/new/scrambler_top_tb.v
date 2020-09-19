@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 1ns
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -26,6 +26,7 @@ module scrambler_top_tb;
     reg clk_in;
     reg [15:0] data_in;
     reg data_in_valid;
+    wire data_in_ready;
     
     wire [15:0] data_out;
     wire data_out_valid;
@@ -41,6 +42,7 @@ module scrambler_top_tb;
         .clk_in         (clk_in),
         .data_in        (data_in),
         .data_in_valid  (data_in_valid),
+        .data_in_ready  (data_in_ready),
         .data_out       (data_out),
         .data_out_valid (data_out_valid));
 
@@ -71,10 +73,16 @@ module scrambler_top_tb;
             #7 data_in_valid = 1'b1;
             data_in = data_in_vec[256-1-i -: 16];
             
-            #13 data_in_valid = 1'b0;
+            #24 data_in_valid = 1'b0;
             data_in = 16'hFFFF;
+                
+            while(!data_out_valid)
+            begin
+                #2 data_in_valid = 1'b0;
+                data_in = 16'hFFFF;
+            end
             
-            #190 data_in_valid = 1'b0;
+            #14 data_in_valid = 1'b0;
             data_out_vec[256-1-i -: 16] = data_out;
         end
         

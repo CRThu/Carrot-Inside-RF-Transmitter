@@ -30,6 +30,7 @@ module scrambler_top
     input clk_in,
     input [PARALLEL_WIDTH-1:0] data_in,
     input data_in_valid,
+    output data_in_ready,
     output [PARALLEL_WIDTH-1:0] data_out,
     output data_out_valid
     );
@@ -46,6 +47,7 @@ module scrambler_top
         .clk_in         (clk_in),
         .data_in        (data_in),
         .data_in_valid  (data_in_valid),
+        .data_in_ready  (data_in_ready),
         .data_out       (data_scrambler_in),
         .data_out_valid (data_scrambler_in_valid));
     

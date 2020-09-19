@@ -29,12 +29,14 @@ module p2s_tb;
     
     wire data_out;
     wire data_out_valid;
+    wire data_in_ready;
     
     p2s p2s_inst(
     .reset_n        (reset_n),
     .clk_in         (clk_in),
     .data_in        (data_in),
     .data_in_valid  (data_in_valid),
+    .data_in_ready  (data_in_ready),
     .data_out       (data_out),
     .data_out_valid (data_out_valid)
     );
@@ -50,6 +52,7 @@ module p2s_tb;
     always
         #5 clk_in = ~clk_in;
 
+    integer i;
     initial
     begin
         #30 reset_n = 1'b0;
@@ -79,6 +82,23 @@ module p2s_tb;
         data_in = 16'h6C65;
         #10 data_in_valid = 1'b0;
         data_in = 16'h0;
+        
+        for(i=0;i<5;i=i+1)
+        begin
+            // wait for ready signal
+            while(!data_in_ready)
+            begin
+                #5 data_in_valid = 1'b0;
+                data_in = 16'h0;
+            end
+            // input random numbers
+            #3 data_in_valid = 1'b1;
+            data_in = $random;
+            $display("data_in=16'h%x",data_in);
+            
+            #27 data_in_valid = 1'b0;
+            data_in = 16'h0;
+        end
         
         #200 $stop;
     end

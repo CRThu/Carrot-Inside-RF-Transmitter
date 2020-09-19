@@ -27,6 +27,8 @@ module p2s2p_tb;
     reg [15:0] data_p_in;
     reg data_p_in_valid;
     
+    wire data_p_in_ready;
+    
     wire data_s_out;
     wire data_s_out_valid;
     
@@ -41,6 +43,7 @@ module p2s2p_tb;
         .clk_in         (clk_in),
         .data_in        (data_p_in),
         .data_in_valid  (data_p_in_valid),
+        .data_in_ready  (data_p_in_ready),
         .data_out       (data_s_out),
         .data_out_valid (data_s_out_valid));
     
@@ -75,7 +78,7 @@ module p2s2p_tb;
         
         #60 data_p_in_valid = 1'b1;
         data_p_in = 16'hABCD;
-        #10 data_p_in_valid = 1'b0;
+        #30 data_p_in_valid = 1'b0;
         data_p_in = 16'h0;
         
         #300 data_p_in_valid = 1'b1;
@@ -83,7 +86,7 @@ module p2s2p_tb;
         #10 data_p_in_valid = 1'b0;
         data_p_in = 16'h0;
         
-        #200 data_p_in_valid = 1'b1;
+        #170 data_p_in_valid = 1'b1;
         data_p_in = 16'h6789;
         #10 data_p_in_valid = 1'b0;
         data_p_in = 16'h0;

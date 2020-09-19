@@ -26,15 +26,18 @@ module p2s
     input clk_in,
     input [PARALLEL_WIDTH-1:0] data_in,
     input data_in_valid,
+    output data_in_ready,
     output data_out,
     output data_out_valid
     );
     
+    reg data_in_ready_r;
     reg data_out_r;
     reg data_out_valid_r;
     reg [$clog2(PARALLEL_WIDTH):0] cnt;
     reg [PARALLEL_WIDTH-1:0] data_r;
     
+    assign data_in_ready = data_in_ready_r;
     assign data_out = data_out_r;
     assign data_out_valid = data_out_valid_r;
     
@@ -46,6 +49,7 @@ module p2s
             data_r                  <= 0;
             data_out_r              <= 1'b0;
             data_out_valid_r        <= 1'b0;
+            data_in_ready_r         <= 1'b0;
         end
         else
         begin
@@ -55,13 +59,15 @@ module p2s
                 data_r              <= (data_r << 1'b1);
                 data_out_r          <= data_r[PARALLEL_WIDTH-1];
                 data_out_valid_r    <= 1'b1;
+                data_in_ready_r     <= 1'b0;
             end
-            else if(data_in_valid)
+            else if(data_in_valid & data_in_ready_r)
             begin
                 cnt                 <= PARALLEL_WIDTH;
                 data_r              <= data_in;
                 data_out_r          <= 1'b0;
                 data_out_valid_r    <= 1'b0;
+                data_in_ready_r     <= 1'b0;
             end
             else
             begin
@@ -69,6 +75,7 @@ module p2s
                 data_r              <= data_r;
                 data_out_r          <= data_out_r;
                 data_out_valid_r    <= 1'b0;
+                data_in_ready_r     <= 1'b1;
             end
         end
     end
