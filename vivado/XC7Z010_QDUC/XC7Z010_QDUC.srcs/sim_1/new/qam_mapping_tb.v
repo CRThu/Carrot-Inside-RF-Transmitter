@@ -27,8 +27,8 @@ module qam_mapping_tb;
     reg [7:0] data_in;
     reg data_in_valid;
     
-    wire [15:0] I_out;
-    wire [15:0] Q_out;
+    wire signed [15:0] I_out;
+    wire signed [15:0] Q_out;
     wire data_out_valid;
     
     qam_mapping #(
@@ -53,27 +53,35 @@ module qam_mapping_tb;
     
     always
         #5 clk_in = ~clk_in;
-        
+    
+    reg [128-1:0] data_in_vec = 128'h0123456789ABCDEF13579BDF02468ACE;
+    
     integer i;
     initial
     begin
         #30 reset_n = 1'b0;
         #30 reset_n = 1'b1;
         
-        #6 data_in_valid = 1'b0;
+        #14 data_in_valid = 1'b0;
         
         for(i=0;i<16;i=i+1)
         begin
-            #7 data_in_valid = 1'b1;
+            data_in_valid = 1'b1;
             // FOR TESTING GRAY2BIN
-            data_in = i*17+1;
-            //data_in = $random;
+            //data_in = i*17+1;
+            // FOR MATLAB TEST VECTOR
+            data_in = data_in_vec[128-1-i*8 -: 8];
             
             #3 data_in_valid = 1'b0;
-            data_in = 16'hFFFF;
             
-            #10 data_in_valid = 1'b0;
+            if(i!=0)
+                $display("I:%d\tQ:%d",I_out,Q_out);
+            $write("data:0x%02h\t\t",data_in);
+            
+            #7 data_in_valid = data_in_valid;
+            data_in = data_in;
         end
+        #3 $display("I:%d\tQ:%d",I_out,Q_out);
         
         #50 $stop;
     end

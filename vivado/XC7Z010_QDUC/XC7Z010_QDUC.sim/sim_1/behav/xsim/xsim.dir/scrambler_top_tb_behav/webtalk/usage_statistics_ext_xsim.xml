@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<webTalkData  fileName='usage_statistics_ext_xsim.xml'  majorVersion='1' minorVersion='0' timeStamp='Sat Sep 19 21:54:06 2020'>
+<webTalkData  fileName='usage_statistics_ext_xsim.xml'  majorVersion='1' minorVersion='0' timeStamp='Fri Sep 25 16:56:35 2020'>
 <section name="__ROOT__" level="0" order="1" description="">
  <section name="software_version_and_target_device" level="1" order="1" description="">
   <keyValuePair key="beta" value="FALSE" description="" />
   <keyValuePair key="build_version" value="2708876" description="" />
-  <keyValuePair key="date_generated" value="Sat Sep 19 21:54:04 2020" description="" />
+  <keyValuePair key="date_generated" value="Fri Sep 25 16:56:33 2020" description="" />
   <keyValuePair key="os_platform" value="WIN64" description="" />
   <keyValuePair key="product_version" value="XSIM v2019.2 (64-bit)" description="" />
   <keyValuePair key="project_id" value="474f1a9697b74573a054b532fb577ad6" description="" />
-  <keyValuePair key="project_iteration" value="24" description="" />
+  <keyValuePair key="project_iteration" value="40" description="" />
   <keyValuePair key="random_id" value="4bad9526-75ac-46de-a82b-c9767d2800b1" description="" />
   <keyValuePair key="registration_id" value="4bad9526-75ac-46de-a82b-c9767d2800b1" description="" />
   <keyValuePair key="route_design" value="FALSE" description="" />
@@ -35,9 +35,9 @@
   </section>
   <section name="usage" level="2" order="2" description="">
    <keyValuePair key="iteration" value="0" description="" />
-   <keyValuePair key="runtime" value="1378 ns" description="" />
-   <keyValuePair key="simulation_memory" value="6700_KB" description="" />
-   <keyValuePair key="simulation_time" value="0.05_sec" description="" />
+   <keyValuePair key="runtime" value="481 ns" description="" />
+   <keyValuePair key="simulation_memory" value="14836_KB" description="" />
+   <keyValuePair key="simulation_time" value="13.42_sec" description="" />
    <keyValuePair key="trace_waveform" value="true" description="" />
   </section>
  </section>
