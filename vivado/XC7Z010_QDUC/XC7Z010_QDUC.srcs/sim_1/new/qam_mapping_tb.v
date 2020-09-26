@@ -54,7 +54,8 @@ module qam_mapping_tb;
     always
         #5 clk_in = ~clk_in;
     
-    reg [128-1:0] data_in_vec = 128'h0123456789ABCDEF13579BDF02468ACE;
+    //reg [128-1:0] data_in_vec = 128'hA337666075EF9992BF7DE1DD110BDC92;
+    reg [128-1:0] data_in_vec = 128'h776F2E1A538E3BE8D10B7ED023199554;
     
     integer i;
     initial

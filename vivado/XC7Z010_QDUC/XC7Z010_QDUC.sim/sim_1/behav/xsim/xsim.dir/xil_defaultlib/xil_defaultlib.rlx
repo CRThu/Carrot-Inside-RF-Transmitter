@@ -5,7 +5,7 @@ Nov  6 2019
 D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
 D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/p2s2p_tb.v,1600522964,verilog,,D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/p2s_tb.v,,p2s2p_tb,,,,,,,,
 D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/p2s_tb.v,1600522682,verilog,,D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/scrambler_top_tb.v,,p2s_tb,,,,,,,,
-D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/qam_mapping_tb.v,1601023602,verilog,,,,qam_mapping_tb,,,,,,,,
+D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/qam_mapping_tb.v,1601131884,verilog,,,,qam_mapping_tb,,,,,,,,
 D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/scrambler_tb.v,1600272781,verilog,,D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/p2s2p_tb.v,,scrambler_tb,,,,,,,,
 D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/scrambler_top_tb.v,1601024265,verilog,,D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sim_1/new/qam_mapping_tb.v,,scrambler_top_tb,,,,,,,,
 D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/new/gray2bin.v,1600940691,verilog,,D:/Projects/Carrot-Inside-RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/new/qam_mapping.v,,gray2bin,,,,,,,,
