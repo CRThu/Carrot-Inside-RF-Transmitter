@@ -7,10 +7,9 @@ Carrot's RF Transmitter
 ## Progress   
 ||Tasks|
 |-|-|
-|√|MATLAB simulation for scrambler|
-|√|Verilog codes for scrambler|
-|-|Data mapping|
-|-|FIR|
+|√|Scrambler|
+|√|QAM Mapping|
+|-|Filter|
 |-|Multiplier|
 |-|NCO|
 |-|DAC Interface|
