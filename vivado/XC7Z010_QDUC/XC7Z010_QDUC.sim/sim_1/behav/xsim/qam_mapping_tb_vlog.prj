@@ -1,18 +1,9 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
 "../../../../XC7Z010_QDUC.srcs/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
-"../../../../XC7Z010_QDUC.srcs/sources_1/new/qduc_top.v" \
-"../../../../XC7Z010_QDUC.srcs/sources_1/new/scrambler.v" \
-"../../../../XC7Z010_QDUC.srcs/sources_1/new/p2s.v" \
-"../../../../XC7Z010_QDUC.srcs/sources_1/new/s2p.v" \
-"../../../../XC7Z010_QDUC.srcs/sources_1/new/scrambler_top.v" \
 "../../../../XC7Z010_QDUC.srcs/sources_1/new/gray2bin.v" \
 "../../../../XC7Z010_QDUC.srcs/sources_1/new/qam_mapping.v" \
 "../../../../XC7Z010_QDUC.srcs/sources_1/new/quantized_level_lut.v" \
-"../../../../XC7Z010_QDUC.srcs/sim_1/new/scrambler_tb.v" \
-"../../../../XC7Z010_QDUC.srcs/sim_1/new/p2s2p_tb.v" \
-"../../../../XC7Z010_QDUC.srcs/sim_1/new/p2s_tb.v" \
-"../../../../XC7Z010_QDUC.srcs/sim_1/new/scrambler_top_tb.v" \
 "../../../../XC7Z010_QDUC.srcs/sim_1/new/qam_mapping_tb.v" \
 
 # compile glbl module
