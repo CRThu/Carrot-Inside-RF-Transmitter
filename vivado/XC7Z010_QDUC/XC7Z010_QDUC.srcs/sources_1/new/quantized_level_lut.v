@@ -21,6 +21,7 @@
 
 `define USE_XILINX_IP
 
+// TODO:NEED TO BE NORMALIZED TO 1
 module quantized_level_lut
     #(parameter IQ_WIDTH = 4,
     parameter ANALOG_WIDTH = 16)(

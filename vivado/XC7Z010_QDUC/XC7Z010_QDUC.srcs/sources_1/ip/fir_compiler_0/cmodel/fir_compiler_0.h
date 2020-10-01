@@ -69,7 +69,7 @@
 // coeff_fract_width: 0
 // chan_seq: 0
 // num_channels: 1
-// num_paths: 1
+// num_paths: 2
 // data_width: 16
 // data_fract_width: 0
 // output_rounding_mode: 1
@@ -101,7 +101,7 @@ static xip_fir_v7_2_config gen_fir_compiler_0_config() {
   config.chan_seq            = XIP_FIR_BASIC_CHAN_SEQ;
   config.num_channels        = 1;
   config.init_pattern        = fir_compiler_0_chanpats[0];
-  config.num_paths           = 1;
+  config.num_paths           = 2;
   config.data_width          = 16;
   config.data_fract_width    = 0;
   config.output_rounding_mode= XIP_FIR_TRUNCATE_LSBS;
