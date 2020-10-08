@@ -1,7 +1,6 @@
 % Override Y-Axis Labels
-% BUGS:CANNOT UPDATE WHEN ZOOM
 function OverrideYLabel(src,callbackdata)
-    for gca_i=1:2
+    for gca_i=1:length(src.Children)
         gca_current=src.Children(gca_i);
         yticks('auto') 
         y_string = '%d';
@@ -12,6 +11,7 @@ function OverrideYLabel(src,callbackdata)
         end
         set(gca_current, 'yticklabel', yticklabel);
         
-        fprintf('GUI AXES %d Updated.\n',gca_i);
+        %disp(callbackdata)
+        %fprintf('GUI AXES %d Updated.\n',gca_i);
     end
 end

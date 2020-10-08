@@ -62,11 +62,10 @@ subplot(2,1,2);
 stairs(1:DISPLAY_LEN*4,signal_out(1:DISPLAY_LEN*4));
 title('SRRC FILTER SIGNAL OUT');
 
-% Update Y Label
+% Override Y Label
 OverrideYLabel(f,0);
-
 set(f,'SizeChangedFcn',@OverrideYLabel);
-
+% Override Cursor
 OverrideCursor();
 
 % EOF
