@@ -56,7 +56,7 @@ module srrc_filter_tb;
     end
     
     always
-        #5 clk_in = ~clk_in;
+        #1 clk_in = ~clk_in;
         
     reg [256-1:0] data_in_vec = 256'h416C7068610D0A427261766F0D0A436861726C69650D0A44656C74610D0A4563;
 

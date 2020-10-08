@@ -1,2 +1,2 @@
-set_param general.maxThreads 8
+set_param general.maxThreads 16
 get_param general.maxThreads
