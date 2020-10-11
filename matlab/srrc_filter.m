@@ -12,6 +12,9 @@ addpath(genpath('./utility'))
 SPECIFY_VEC = ['416C7068610D0A427261766F0D0A436861726C69650D0A44656C74610D0A4563'];
 VEC_LEN = 64;
 
+% interpolation value
+INTERP_VAL = 4;
+
 % srrc order=24 wc=0.25 alpha=0.25
 COEFFICIENT_VEC = [-0.00881958007812500,0.00143432617187500,0.0156402587890625,0.0227355957031250,0.0129089355468750,-0.0134735107421875,-0.0419311523437500,-0.0491638183593750,-0.0159454345703125,0.0592346191406250,0.155181884765625,0.235687255859375,0.267074584960938,0.235687255859375,0.155181884765625,0.0592346191406250,-0.0159454345703125,-0.0491638183593750,-0.0419311523437500,-0.0134735107421875,0.0129089355468750,0.0227355957031250,0.0156402587890625,0.00143432617187500,-0.00881958007812500];
 FILTER_ORDER = 24;
@@ -40,10 +43,10 @@ signal_in_n = signal_in.*32767-16384;
 % add zeros after signal_in
 signal_in_n = [signal_in_n zeros(1,FILTER_DELAY_ADD_SAMPLES)];
 
-% interpolation (L*4)
-signal_in_interp = zeros(1,length(signal_in_n)*4);
+% interpolation (I*INTERP_VAL)
+signal_in_interp = zeros(1,length(signal_in_n)*INTERP_VAL);
 for i=1:length(signal_in_n)
-    signal_in_interp(1+(i-1)*4) = signal_in_n(i);
+    signal_in_interp(1+(i-1)*INTERP_VAL) = signal_in_n(i);
 end
 
 % Filter
@@ -59,7 +62,7 @@ subplot(2,1,1);
 stairs(1:DISPLAY_LEN,signal_in_n(1:DISPLAY_LEN));
 title('SRRC FILTER SIGNAL IN');
 subplot(2,1,2);
-stairs(1:DISPLAY_LEN*4,signal_out(1:DISPLAY_LEN*4));
+stairs(1:DISPLAY_LEN*INTERP_VAL,signal_out(1:DISPLAY_LEN*INTERP_VAL));
 title('SRRC FILTER SIGNAL OUT');
 
 % Override Y Label
@@ -67,5 +70,8 @@ OverrideYLabel(f,0);
 set(f,'SizeChangedFcn',@OverrideYLabel);
 % Override Cursor
 OverrideCursor();
+
+% EyeDiagram
+eyediagram(signal_out,INTERP_VAL*2);
 
 % EOF
