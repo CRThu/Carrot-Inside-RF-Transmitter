@@ -3,7 +3,7 @@ function OverrideYLabel(src,callbackdata)
     for gca_i=1:length(src.Children)
         gca_current=src.Children(gca_i);
         yticks('auto') 
-        y_string = '%d';
+        y_string = '%g';
         ytick = get(gca_current, 'ytick');
         yticklabel = cell(1,length(ytick));
         for i = 1:length(ytick)

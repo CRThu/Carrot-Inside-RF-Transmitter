@@ -69,7 +69,7 @@ title('SRRC FILTER SIGNAL OUT');
 OverrideYLabel(f,0);
 set(f,'SizeChangedFcn',@OverrideYLabel);
 % Override Cursor
-OverrideCursor();
+OverrideCursor(f);
 
 % EyeDiagram
 eyediagram(signal_out,INTERP_VAL*2);

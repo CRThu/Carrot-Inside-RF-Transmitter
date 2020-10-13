@@ -3,7 +3,7 @@ function OverrideXLabel(src,callbackdata)
     for gca_i=1:length(src.Children)
         gca_current=src.Children(gca_i);
         xticks('auto') 
-        x_string = '%d';
+        x_string = '%g';
         xtick = get(gca_current, 'xtick');
         xticklabel = cell(1,length(xtick));
         for i = 1:length(xtick)

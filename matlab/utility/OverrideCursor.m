@@ -1,5 +1,5 @@
 % Override Cursor in figure
-function OverrideCursor()
-    dcm_obj = datacursormode(gcf);
+function OverrideCursor(f)
+    dcm_obj = datacursormode(f);
     set(dcm_obj,'UpdateFcn',@OverrideCursorCallback)
 end
