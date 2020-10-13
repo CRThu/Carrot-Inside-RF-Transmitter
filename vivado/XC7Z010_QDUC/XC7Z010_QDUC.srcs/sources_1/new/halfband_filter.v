@@ -35,8 +35,10 @@ module halfband_filter
     
     `ifdef USE_XILINX_IP
         // USE XILINX IP
+        // TODO: NET CONNECTION
+        // TODO: CONST MULTIPLY
         
-        // WARNING : START UP LATENCY = 20 CLKs
+        // WARNING : START UP LATENCY = 15 + 17 CLKs
         
         // AXI4 Stream Port Structure
         // Data Field            Type
@@ -50,7 +52,18 @@ module halfband_filter
         assign {data_out_Q,data_out_I} = data_out;
         
         //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
-        fir_compiler_1 fir_compiler_1_inst (
+        halfband_filter_0 halfband_filter_0_inst (
+          .aclk                 (clk_in),           // input wire aclk
+          .s_axis_data_tvalid   (data_in_valid),    // input wire s_axis_data_tvalid
+          .s_axis_data_tready   (data_in_ready),    // output wire s_axis_data_tready
+          .s_axis_data_tdata    (data_in),          // input wire [31 : 0] s_axis_data_tdata
+          .m_axis_data_tvalid   (data_out_valid),   // output wire m_axis_data_tvalid
+          .m_axis_data_tdata    (data_out)          // output wire [31 : 0] m_axis_data_tdata
+        );
+        // INST_TAG_END ------ End INSTANTIATION Template ---------
+        
+        //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
+        halfband_filter_1 halfband_filter_1_inst (
           .aclk                 (clk_in),           // input wire aclk
           .s_axis_data_tvalid   (data_in_valid),    // input wire s_axis_data_tvalid
           .s_axis_data_tready   (data_in_ready),    // output wire s_axis_data_tready
