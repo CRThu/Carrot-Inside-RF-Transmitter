@@ -96,7 +96,7 @@ architecture tb of tb_halfband_filter_0 is
 
   -- Data master channel signals
   signal m_axis_data_tvalid              : std_logic := '0';  -- payload is valid
-  signal m_axis_data_tdata               : std_logic_vector(31 downto 0) := (others => '0');  -- data payload
+  signal m_axis_data_tdata               : std_logic_vector(47 downto 0) := (others => '0');  -- data payload
 
   -----------------------------------------------------------------------
   -- Aliases for AXI channel TDATA and TUSER fields
@@ -110,8 +110,8 @@ architecture tb of tb_halfband_filter_0 is
   signal s_axis_data_tdata_path1       : std_logic_vector(15 downto 0) := (others => '0');
 
   -- Data master channel alias signals
-  signal m_axis_data_tdata_path0       : std_logic_vector(15 downto 0) := (others => '0');
-  signal m_axis_data_tdata_path1       : std_logic_vector(15 downto 0) := (others => '0');
+  signal m_axis_data_tdata_path0       : std_logic_vector(17 downto 0) := (others => '0');
+  signal m_axis_data_tdata_path1       : std_logic_vector(17 downto 0) := (others => '0');
 
 
 begin
@@ -270,7 +270,7 @@ begin
   s_axis_data_tdata_path1       <= s_axis_data_tdata(31 downto 16);
 
   -- Data master channel alias signals: update these only when they are valid
-  m_axis_data_tdata_path0       <= m_axis_data_tdata(15 downto 0) when m_axis_data_tvalid = '1';
-  m_axis_data_tdata_path1       <= m_axis_data_tdata(31 downto 16) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_path0       <= m_axis_data_tdata(17 downto 0) when m_axis_data_tvalid = '1';
+  m_axis_data_tdata_path1       <= m_axis_data_tdata(41 downto 24) when m_axis_data_tvalid = '1';
 
 end tb;
