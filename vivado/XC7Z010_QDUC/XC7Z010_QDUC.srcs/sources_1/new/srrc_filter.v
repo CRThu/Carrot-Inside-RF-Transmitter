@@ -23,7 +23,8 @@
 
 module srrc_filter
     #(parameter DATA_IN_WIDTH = 16,
-    parameter DATA_OUT_WIDTH = 16)(
+    parameter DATA_OUT_WIDTH = 16,
+    parameter PATH_DATA_WIDTH = 24)(
     input clk_in,
     input [DATA_IN_WIDTH-1:0] data_in_I,
     input [DATA_IN_WIDTH-1:0] data_in_Q,
@@ -40,24 +41,32 @@ module srrc_filter
         // WARNING : START UP LATENCY = 17 CLKs
         
         // AXI4 Stream Port Structure
+        // S_AXIS_DATA
         // Data Field            Type
         // Q    PATH_1(31:16)    fix16_0
         // I    PATH_0(15: 0)    fix16_0
+        // M_AXIS_DATA
+        // Data Field            Type
+        // Q    PATH_1(40:24)    fix17_2
+        // I    PATH_0(16: 0)    fix17_2
+        
+        // [16:0] -> {1'b0,[16:2]} -> ¡Á4(¡ÁI) -> [15:0]
         
         wire [DATA_IN_WIDTH*2-1:0] data_in;
-        wire [DATA_OUT_WIDTH*2-1:0] data_out;
-        
         assign data_in = {data_in_Q,data_in_I};
-        assign {data_out_Q,data_out_I} = data_out;
+        
+        wire [PATH_DATA_WIDTH*2-1:0] data_out;
+        assign data_out_I = data_out[DATA_OUT_WIDTH+PATH_DATA_WIDTH*0-1:PATH_DATA_WIDTH*0];
+        assign data_out_Q = data_out[DATA_OUT_WIDTH+PATH_DATA_WIDTH*1-1:PATH_DATA_WIDTH*1];
         
         //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
-        fir_compiler_0 fir_compiler_0_inst (
+        srrc_filter_0 srrc_filter_0_inst (
           .aclk                 (clk_in),           // input wire aclk
           .s_axis_data_tvalid   (data_in_valid),    // input wire s_axis_data_tvalid
           .s_axis_data_tready   (data_in_ready),    // output wire s_axis_data_tready
           .s_axis_data_tdata    (data_in),          // input wire [31 : 0] s_axis_data_tdata
           .m_axis_data_tvalid   (data_out_valid),   // output wire m_axis_data_tvalid
-          .m_axis_data_tdata    (data_out)          // output wire [31 : 0] m_axis_data_tdata
+          .m_axis_data_tdata    (data_out)          // output wire [47 : 0] m_axis_data_tdata
         );
         // INST_TAG_END ------ End INSTANTIATION Template ---------
     `endif

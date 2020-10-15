@@ -1,0 +1,484 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Thu Oct 15 21:33:32 2020
+# Process ID: 8892
+# Current directory: D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1
+# Command line: vivado.exe -log srrc_filter_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source srrc_filter_0.tcl
+# Log file: D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1/srrc_filter_0.vds
+# Journal file: D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source srrc_filter_0.tcl -notrace
+Command: synth_design -top srrc_filter_0 -part xc7z010clg400-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 12824 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 821.520 ; gain = 233.742
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'srrc_filter_0' [d:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/synth/srrc_filter_0.vhd:70]
+	Parameter C_XDEVICEFAMILY bound to: zynq - type: string 
+	Parameter C_ELABORATION_DIR bound to: ./ - type: string 
+	Parameter C_COMPONENT_NAME bound to: srrc_filter_0 - type: string 
+	Parameter C_COEF_FILE bound to: srrc_filter_0.mif - type: string 
+	Parameter C_COEF_FILE_LINES bound to: 16 - type: integer 
+	Parameter C_FILTER_TYPE bound to: 2 - type: integer 
+	Parameter C_INTERP_RATE bound to: 4 - type: integer 
+	Parameter C_DECIM_RATE bound to: 1 - type: integer 
+	Parameter C_ZERO_PACKING_FACTOR bound to: 1 - type: integer 
+	Parameter C_SYMMETRY bound to: 1 - type: integer 
+	Parameter C_NUM_FILTS bound to: 1 - type: integer 
+	Parameter C_NUM_TAPS bound to: 25 - type: integer 
+	Parameter C_NUM_CHANNELS bound to: 1 - type: integer 
+	Parameter C_CHANNEL_PATTERN bound to: fixed - type: string 
+	Parameter C_ROUND_MODE bound to: 1 - type: integer 
+	Parameter C_COEF_RELOAD bound to: 0 - type: integer 
+	Parameter C_NUM_RELOAD_SLOTS bound to: 1 - type: integer 
+	Parameter C_COL_MODE bound to: 1 - type: integer 
+	Parameter C_COL_PIPE_LEN bound to: 4 - type: integer 
+	Parameter C_COL_CONFIG bound to: 4 - type: string 
+	Parameter C_OPTIMIZATION bound to: 0 - type: integer 
+	Parameter C_DATA_PATH_WIDTHS bound to: 16,16 - type: string 
+	Parameter C_DATA_IP_PATH_WIDTHS bound to: 16,16 - type: string 
+	Parameter C_DATA_PX_PATH_WIDTHS bound to: 16,16 - type: string 
+	Parameter C_DATA_WIDTH bound to: 16 - type: integer 
+	Parameter C_COEF_PATH_WIDTHS bound to: 17,17 - type: string 
+	Parameter C_COEF_WIDTH bound to: 16 - type: integer 
+	Parameter C_DATA_PATH_SRC bound to: 0,1 - type: string 
+	Parameter C_COEF_PATH_SRC bound to: 0,0 - type: string 
+	Parameter C_PX_PATH_SRC bound to: 0,1 - type: string 
+	Parameter C_DATA_PATH_SIGN bound to: 0,0 - type: string 
+	Parameter C_COEF_PATH_SIGN bound to: 0,0 - type: string 
+	Parameter C_ACCUM_PATH_WIDTHS bound to: 32,32 - type: string 
+	Parameter C_OUTPUT_WIDTH bound to: 17 - type: integer 
+	Parameter C_OUTPUT_PATH_WIDTHS bound to: 17,17 - type: string 
+	Parameter C_ACCUM_OP_PATH_WIDTHS bound to: 31,31 - type: string 
+	Parameter C_EXT_MULT_CNFG bound to: none - type: string 
+	Parameter C_DATA_PATH_PSAMP_SRC bound to: 0 - type: string 
+	Parameter C_OP_PATH_PSAMP_SRC bound to: 0 - type: string 
+	Parameter C_NUM_MADDS bound to: 4 - type: integer 
+	Parameter C_OPT_MADDS bound to: none - type: string 
+	Parameter C_OVERSAMPLING_RATE bound to: 1 - type: integer 
+	Parameter C_INPUT_RATE bound to: 4 - type: integer 
+	Parameter C_OUTPUT_RATE bound to: 1 - type: integer 
+	Parameter C_DATA_MEMTYPE bound to: 0 - type: integer 
+	Parameter C_COEF_MEMTYPE bound to: 2 - type: integer 
+	Parameter C_IPBUFF_MEMTYPE bound to: 0 - type: integer 
+	Parameter C_OPBUFF_MEMTYPE bound to: 2 - type: integer 
+	Parameter C_DATAPATH_MEMTYPE bound to: 0 - type: integer 
+	Parameter C_MEM_ARRANGEMENT bound to: 1 - type: integer 
+	Parameter C_DATA_MEM_PACKING bound to: 0 - type: integer 
+	Parameter C_COEF_MEM_PACKING bound to: 0 - type: integer 
+	Parameter C_FILTS_PACKED bound to: 0 - type: integer 
+	Parameter C_LATENCY bound to: 14 - type: integer 
+	Parameter C_HAS_ARESETn bound to: 0 - type: integer 
+	Parameter C_HAS_ACLKEN bound to: 0 - type: integer 
+	Parameter C_DATA_HAS_TLAST bound to: 0 - type: integer 
+	Parameter C_S_DATA_HAS_FIFO bound to: 0 - type: integer 
+	Parameter C_S_DATA_HAS_TUSER bound to: 0 - type: integer 
+	Parameter C_S_DATA_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_DATA_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_DATA_HAS_TREADY bound to: 0 - type: integer 
+	Parameter C_M_DATA_HAS_TUSER bound to: 0 - type: integer 
+	Parameter C_M_DATA_TDATA_WIDTH bound to: 48 - type: integer 
+	Parameter C_M_DATA_TUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_HAS_CONFIG_CHANNEL bound to: 0 - type: integer 
+	Parameter C_CONFIG_SYNC_MODE bound to: 0 - type: integer 
+	Parameter C_CONFIG_PACKET_SIZE bound to: 0 - type: integer 
+	Parameter C_CONFIG_TDATA_WIDTH bound to: 1 - type: integer 
+	Parameter C_RELOAD_TDATA_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-3491] module 'fir_compiler_v7_2_13' declared at 'd:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/hdl/fir_compiler_v7_2_vh_rfs.vhd:61347' bound to instance 'U0' of component 'fir_compiler_v7_2_13' [d:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/synth/srrc_filter_0.vhd:198]
+WARNING: [Synth 8-5858] RAM p_casc_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+WARNING: [Synth 8-5858] RAM p_path_out_reg from Abstract Data Type (record/struct) for this pattern/configuration is not supported. This will most likely be implemented in registers
+INFO: [Synth 8-256] done synthesizing module 'srrc_filter_0' (13#1) [d:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/synth/srrc_filter_0.vhd:70]
+WARNING: [Synth 8-3331] design delay__parameterized24 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design dpr_mem has unconnected port CE_B
+WARNING: [Synth 8-3331] design dpr_mem has unconnected port SCLR_A
+WARNING: [Synth 8-3331] design dpr_mem has unconnected port SCLR_B
+WARNING: [Synth 8-3331] design delay__parameterized23 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized23 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized22 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized21 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized21 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized18 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized18 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized20 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized20 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized19 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized19 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized17 has unconnected port WE
+WARNING: [Synth 8-3331] design delay__parameterized17 has unconnected port CE
+WARNING: [Synth 8-3331] design delay__parameterized17 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized17 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized17 has unconnected port CLK
+WARNING: [Synth 8-3331] design delay__parameterized16 has unconnected port WE
+WARNING: [Synth 8-3331] design delay__parameterized16 has unconnected port CE
+WARNING: [Synth 8-3331] design delay__parameterized16 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized16 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized16 has unconnected port CLK
+WARNING: [Synth 8-3331] design calc__parameterized0 has unconnected port PRE_ADDSUB
+WARNING: [Synth 8-3331] design calc__parameterized0 has unconnected port PRE_ADD_BYPASS
+WARNING: [Synth 8-3331] design calc__parameterized0 has unconnected port CED
+WARNING: [Synth 8-3331] design delay__parameterized15 has unconnected port WE
+WARNING: [Synth 8-3331] design delay__parameterized15 has unconnected port CE
+WARNING: [Synth 8-3331] design delay__parameterized15 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized15 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized15 has unconnected port CLK
+WARNING: [Synth 8-3331] design delay__parameterized14 has unconnected port WE
+WARNING: [Synth 8-3331] design delay__parameterized14 has unconnected port CE
+WARNING: [Synth 8-3331] design delay__parameterized14 has unconnected port SCLR
+WARNING: [Synth 8-3331] design delay__parameterized14 has unconnected port SCLR_ALT
+WARNING: [Synth 8-3331] design delay__parameterized14 has unconnected port CLK
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][57]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][56]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][55]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][54]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][53]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][52]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][51]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][50]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][49]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[fab][48]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][62]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][61]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][60]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][59]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][58]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][57]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][56]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][55]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][54]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][53]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][52]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][51]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][50]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][49]
+WARNING: [Synth 8-3331] design add_accum has unconnected port POUT[casc][48]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][57]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][56]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][55]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][54]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][53]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][52]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][51]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][50]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][49]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][48]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][47]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][46]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][45]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][44]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][43]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][42]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][41]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][40]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][39]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][38]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][37]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][36]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][35]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][34]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][33]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][32]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][31]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][30]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][29]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][28]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][27]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][26]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][25]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][24]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][23]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][22]
+WARNING: [Synth 8-3331] design add_accum has unconnected port PIN[fab][21]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1054.805 ; gain = 467.027
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1054.805 ; gain = 467.027
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1054.805 ; gain = 467.027
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.109 . Memory (MB): peak = 1054.805 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 10 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/srrc_filter_0_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [d:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/srrc_filter_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [d:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/constraints/fir_compiler_v7_2.xdc] for cell 'U0'
+Finished Parsing XDC File [d:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.srcs/sources_1/ip/srrc_filter_0/constraints/fir_compiler_v7_2.xdc] for cell 'U0'
+Parsing XDC File [D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1073.555 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1075.824 ; gain = 2.270
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for U0. (constraint file  D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "rom". This will be implemented in logic
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "rom". This will be implemented in logic
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "rom". This will be implemented in logic
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "rom". This will be implemented in logic
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5587] ROM size for "p_0_out" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5587] ROM size for "p_0_out" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5587] ROM size for "p_0_out" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5542] Attribute ram_style/rom_style = distributed specified for ROM  "p_0_out". This will be implemented in logic
+INFO: [Synth 8-5587] ROM size for "p_0_out" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.i_cntrl_src/gen_dly.gen_regs.delay_bus_reg[0][0]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_cntrl_sym.i_addsup/gen_dly.gen_regs.delay_bus_reg[0][0]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.i_cntrl_src/gen_dly.gen_regs.delay_bus_reg[1][0]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_cntrl_sym.i_addsup/gen_dly.gen_regs.delay_bus_reg[1][0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/i_synth/\g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_paths[0].g_mem_array[0].i_mem/g_individual.i_mem_a /\gen_dram.gen_rom.d_out_reg[0] )
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[5]' (FD) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[6]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[9]' (FD) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[2]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[0]' (FD) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[2]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[1]' (FD) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/i_synth/\g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.g_accum_cntrl.accum_opcode_reg[2] )
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[16]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[17]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[17]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[18]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[18]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[19]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[19]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[20]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[20]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[21]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[21]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[22]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[22]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[23]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[40]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[41]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[41]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[42]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[42]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[43]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[43]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[44]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[44]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[45]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[45]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[46]'
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[46]' (FDRE) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tdata_int_reg[47]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (U0/i_synth/\g_polyphase_interpolation.i_polyphase_interpolation/g_m_data_chan_no_fifo.m_axis_data_tlast_int_reg )
+INFO: [Synth 8-3886] merging instance 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.start_px_reg' (FD) to 'U0/i_synth/g_polyphase_interpolation.i_polyphase_interpolation/g_parallel.base_en_reg'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:00:50 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:51 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:00:51 . Memory (MB): peak = 1075.824 ; gain = 488.047
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1083.363 ; gain = 495.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1083.363 ; gain = 495.586
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1083.363 ; gain = 495.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1083.363 ; gain = 495.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1083.363 ; gain = 495.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1083.363 ; gain = 495.586
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |DSP48E1   |     8|
+|2     |DSP48E1_1 |     2|
+|3     |LUT1      |     4|
+|4     |LUT2      |    24|
+|5     |LUT3      |   137|
+|6     |LUT4      |    18|
+|7     |LUT5      |     5|
+|8     |LUT6      |     3|
+|9     |RAM16X1D  |    34|
+|10    |SRL16E    |   102|
+|11    |FDRE      |   772|
++------+----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1083.363 ; gain = 495.586
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 90 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:53 . Memory (MB): peak = 1083.363 ; gain = 474.566
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:00:58 . Memory (MB): peak = 1083.363 ; gain = 495.586
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 1091.402 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 44 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1091.441 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 34 instances were transformed.
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 34 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+53 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:02 ; elapsed = 00:01:06 . Memory (MB): peak = 1091.441 ; gain = 780.859
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1091.441 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1/srrc_filter_0.dcp' has been generated.
+WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP srrc_filter_0, cache-ID = 3e61f4f549b8fa36
+INFO: [Coretcl 2-1174] Renamed 70 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1091.441 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'D:/Projects/RF-Transmitter/vivado/XC7Z010_QDUC/XC7Z010_QDUC.runs/srrc_filter_0_synth_1/srrc_filter_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file srrc_filter_0_utilization_synth.rpt -pb srrc_filter_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 15 21:34:46 2020...

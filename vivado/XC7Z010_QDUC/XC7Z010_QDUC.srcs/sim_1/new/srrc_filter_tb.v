@@ -35,7 +35,8 @@ module srrc_filter_tb;
     
     srrc_filter #(
         .DATA_IN_WIDTH  (16),
-        .DATA_OUT_WIDTH (16))
+        .DATA_OUT_WIDTH (16),
+        .PATH_DATA_WIDTH (24))
     srrc_filter_inst(
         .clk_in         (clk_in),
         .data_in_I      (data_in_I),
@@ -56,7 +57,7 @@ module srrc_filter_tb;
     end
     
     always
-        #1 clk_in = ~clk_in;
+        #5 clk_in = ~clk_in;
         
     reg [256-1:0] data_in_vec = 256'h416C7068610D0A427261766F0D0A436861726C69650D0A44656C74610D0A4563;
 
@@ -80,7 +81,7 @@ module srrc_filter_tb;
             else
                 data_in_I = -16384;
                
-            #10 data_in_valid = 1'b0;
+            #11 data_in_valid = 1'b0;
         end
         #200 $stop;
     end

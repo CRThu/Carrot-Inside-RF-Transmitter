@@ -35,7 +35,8 @@ module halfband_filter_tb;
     
     halfband_filter #(
         .DATA_IN_WIDTH  (16),
-        .DATA_OUT_WIDTH (16))
+        .DATA_OUT_WIDTH (16),
+        .PATH_DATA_WIDTH(24))
     halfband_filter_inst(
         .clk_in         (clk_in),
         .data_in_I      (data_in_I),
@@ -56,7 +57,7 @@ module halfband_filter_tb;
     end
     
     always
-        #1 clk_in = ~clk_in;
+        #5 clk_in = ~clk_in;
         
     reg [16-1:0] data_in_vec[128-1:0];
     
@@ -81,7 +82,7 @@ module halfband_filter_tb;
             data_in_Q = data_in_vec[i];
             
             // delay >= clk_period (?)
-            #3 data_in_valid = 1'b0;
+            #11 data_in_valid = 1'b0;
         end
         #200 $stop;
     end
