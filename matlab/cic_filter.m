@@ -21,9 +21,9 @@ CIC_N = 5;      % Number of Stages
 CIC_M = 1;      % Differential Delay
 
 % h(t)
-ht_GEN = 0;     % 0:Signal; 1:h(t);
 ht_ZEROS = 10;
-ht_CIC = [1,5,15,35,70,126,210,330,490,690,926,1190,1470,1750,2010,2226,2380,2460,2460,2380,2226,2010,1750,1470,1190,926,690,490,330,210,126,70,35,15,5,1];
+%ht_CIC = [1,5,15,35,70,126,210,330,490,690,926,1190,1470,1750,2010,2226,2380,2460,2460,2380,2226,2010,1750,1470,1190,926,690,490,330,210,126,70,35,15,5,1];
+ht_CIC = [];
 
 % test signals
 fs = 64;
@@ -39,70 +39,90 @@ sin_sum = sin2;
 % CIC Filter
 % --> Comb -> ... -> Comb --> ¡ÁR --> Int -> ... -> Int -->
 
-% DATA
-if ht_GEN == 0
-    DATA_IN = floor(sin_sum);
-else
-    DATA_IN = [1,zeros(1,ht_ZEROS)];
-end
-
-DATA_LEN = length(DATA_IN);
-
-DISPLAY_LEN = DATA_LEN;
-%DISPLAY_LEN = 128;
-
-% N Stages Comb
-comb_net = zeros(1,CIC_N+1);
-comb_reg = zeros(CIC_M,CIC_N);
-comb_reg_tmp = zeros(CIC_M+1,CIC_N);
-comb_data_out = zeros(1,DATA_LEN);
-for i=1:DATA_LEN
-    % Update Nets
-    comb_net(1) = DATA_IN(i);
-    for j=1:CIC_N
-        comb_net(j+1) = comb_net(j) - comb_reg(CIC_M,j);
+% RUN TWICE
+% 1. calc h(t)
+% 2. calc signal
+for run_cnt=1:2
+    if run_cnt == 1
+        ht_GEN = 1;     % 1:h(t);
+    else
+        ht_GEN = 0;     % 0:Signal
     end
-    % Comb Output
-    comb_data_out(i) = comb_net(CIC_N+1);
     
-    % Clock Posedge, Update Register of [z^(-M)].
-    comb_reg_tmp = [comb_net(1:CIC_N);comb_reg];
-    comb_reg = comb_reg_tmp(1:CIC_M,:);
-    
-    %fprintf('i = %d.\n',i);
-    %display(comb_reg);
-end
-
-% Interpolation (¡ÁR)
-interp_data_out = [comb_data_out;zeros(CIC_R-1,DATA_LEN)];
-interp_data_out = interp_data_out(:).';
-
-% N Stages Integrator
-int_data_out = zeros(1,DATA_LEN*CIC_R);
-int_net = zeros(1,CIC_N+1);
-int_reg = zeros(1,CIC_N);
-for i=1:DATA_LEN*CIC_R
-    % Update Nets
-    int_net(1) = interp_data_out(i);
-    for j=1:CIC_N
-        int_net(j+1) = int_net(j) + int_reg(j);
+    % DATA
+    if ht_GEN == 0
+        DATA_IN = floor(sin_sum);
+    else
+        DATA_IN = [1,zeros(1,ht_ZEROS)];
     end
-    % Int Output
-    int_data_out(i) = int_net(CIC_N+1);
+
+    DATA_LEN = length(DATA_IN);
+
+    DISPLAY_LEN = DATA_LEN;
+    %DISPLAY_LEN = 128;
+
+    % N Stages Comb
+    comb_net = zeros(1,CIC_N+1);
+    comb_reg = zeros(CIC_M,CIC_N);
+    comb_reg_tmp = zeros(CIC_M+1,CIC_N);
+    comb_data_out = zeros(1,DATA_LEN);
+    for i=1:DATA_LEN
+        % Update Nets
+        comb_net(1) = DATA_IN(i);
+        for j=1:CIC_N
+            comb_net(j+1) = comb_net(j) - comb_reg(CIC_M,j);
+        end
+        % Comb Output
+        comb_data_out(i) = comb_net(CIC_N+1);
+
+        % Clock Posedge, Update Register of [z^(-M)].
+        comb_reg_tmp = [comb_net(1:CIC_N);comb_reg];
+        comb_reg = comb_reg_tmp(1:CIC_M,:);
+
+        %fprintf('i = %d.\n',i);
+        %display(comb_reg);
+    end
+
+    % Interpolation (¡ÁR)
+    interp_data_out = [comb_data_out;zeros(CIC_R-1,DATA_LEN)];
+    interp_data_out = interp_data_out(:).';
+
+    % N Stages Integrator
+    int_data_out = zeros(1,DATA_LEN*CIC_R);
+    int_net = zeros(1,CIC_N+1);
+    int_reg = zeros(1,CIC_N);
+    for i=1:DATA_LEN*CIC_R
+        % Update Nets
+        int_net(1) = interp_data_out(i);
+        for j=1:CIC_N
+            int_net(j+1) = int_net(j) + int_reg(j);
+        end
+        % Int Output
+        int_data_out(i) = int_net(CIC_N+1);
+
+        % Clock Posedge, Update Register of [z^(-1)].
+        int_reg = int_net(2:CIC_N+1);
+
+        %fprintf('i = %d.\n',i);
+        %display(int_reg);
+    end
     
-    % Clock Posedge, Update Register of [z^(-1)].
-    int_reg = int_net(2:CIC_N+1);
-    
-    %fprintf('i = %d.\n',i);
-    %display(int_reg);
+    % Display h(t)
+    if ht_GEN == 1
+        ht_CIC = int_data_out(int_data_out~=0);
+        fprintf('h(t) = ');
+        fprintf('%d;',ht_CIC);
+        fprintf('\n');
+        %fprintf('\nPlease Update ht_CIC in .m file.\n');
+    end
 end
 
 % CIC Compensator Filter
 % Reference: https://ww2.mathworks.cn/help/dsp/ref/fdesign.ciccomp.html
 h_ciccomp = fdesign.ciccomp;
 set(h_ciccomp, 'NumberOfSections', CIC_N, 'DifferentialDelay', CIC_M);
-set(h_ciccomp, 'ap', 0.1, 'ast' , 60);
-set(h_ciccomp, 'fp', 0.48, 'fst' , 0.7);
+set(h_ciccomp, 'ap', 0.1, 'ast' , 40);
+set(h_ciccomp, 'fp', 0.5, 'fst' , 0.7);
 cicComp = design(h_ciccomp,'equiripple','SystemObject',true);
 ht_CIC_Comp = cicComp.Numerator;
 %fvtool(ht_CIC_Comp)
@@ -149,14 +169,6 @@ stairs(comb_data_out(1:DISPLAY_LEN));
 subplot(3,1,3);
 stairs(int_data_out(1:DISPLAY_LEN*4));
 xlabel('Samples');
-
-% Display h(t)
-if ht_GEN == 1
-    ht_CIC = int_data_out(int_data_out~=0);
-    fprintf('h(t) = ');
-    fprintf('%d;',ht_CIC);
-    fprintf('\nPlease Update ht_CIC in .m file.\n');
-end
 
 % Override Y Label
 OverrideYLabel(f,0);
