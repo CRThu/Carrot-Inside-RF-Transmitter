@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../XC7Z010_QDUC.srcs/sources_1/new/cic_filter.v" \
+"../../../../XC7Z010_QDUC.srcs/sources_1/new/cic_interp_filter_top.v" \
+"../../../../XC7Z010_QDUC.srcs/sim_1/new/cic_filter_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

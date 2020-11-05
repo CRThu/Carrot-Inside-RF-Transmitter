@@ -12,6 +12,10 @@ addpath(genpath('./utility'));
 COE_PATH = './coe/';
 CICCOMP0_COE_OUT = 'cic_filter_comp_0.coe';
 
+% Configure Filter .dat Path
+DATA_PATH = './data/';
+TB_MEM_OUT = 'cic_filter_tb_mem.dat';
+
 % COE width
 COE_WIDTH = 16;
 
@@ -26,7 +30,7 @@ ht_ZEROS = 10;
 ht_CIC = [];
 
 % test signals
-fs = 64;
+fs = 128;
 Nsample = fs;
 t = 0:1/Nsample:1/fs*(Nsample-1);
 
@@ -34,7 +38,7 @@ f2 = 0.18;
 a2 = 85;
 
 sin2 = a2*sin(2*pi*f2*fs*t);
-sin_sum = sin2;
+sin_sum = floor(sin2);
 
 % CIC Filter
 % --> Comb -> ... -> Comb --> ¡ÁR --> Int -> ... -> Int -->
@@ -51,7 +55,7 @@ for run_cnt=1:2
     
     % DATA
     if ht_GEN == 0
-        DATA_IN = floor(sin_sum);
+        DATA_IN = sin_sum;
     else
         DATA_IN = [1,zeros(1,ht_ZEROS)];
     end
@@ -102,7 +106,7 @@ for run_cnt=1:2
 
         % Clock Posedge, Update Register of [z^(-1)].
         int_reg = int_net(2:CIC_N+1);
-
+        
         %fprintf('i = %d.\n',i);
         %display(int_reg);
     end
@@ -129,6 +133,12 @@ ht_CIC_Comp = cicComp.Numerator;
 
 % Write COE Fiile
 filter_coe_writer([COE_PATH CICCOMP0_COE_OUT],COE_WIDTH,ht_CIC_Comp);
+
+% write vector for testbench
+testvec_fid = fopen([DATA_PATH TB_MEM_OUT],'w');
+sin_sum_comp = mod(power(2,16)+sin_sum(1:DISPLAY_LEN),power(2,16));
+fprintf(testvec_fid,'%04x\n',sin_sum_comp);
+fclose(testvec_fid);
 
 % Freq Response
 [H1,w1]=freqz(ht_CIC);
@@ -167,8 +177,17 @@ stairs(DATA_IN(1:DISPLAY_LEN));
 subplot(3,1,2);
 stairs(comb_data_out(1:DISPLAY_LEN));
 subplot(3,1,3);
-stairs(int_data_out(1:DISPLAY_LEN*4));
+stairs(int_data_out(1:DISPLAY_LEN*CIC_R));
 xlabel('Samples');
+
+% display test data
+fprintf('TEST DATA:\nRAW:');
+fprintf('%7g,',DATA_IN(1:DISPLAY_LEN));
+fprintf('\nF1 :');
+fprintf('%7g,',comb_data_out(1:DISPLAY_LEN));
+fprintf('\nF2 :');
+fprintf('%7g,',int_data_out(1:DISPLAY_LEN*CIC_R));
+fprintf('\n');
 
 % Override Y Label
 OverrideYLabel(f,0);

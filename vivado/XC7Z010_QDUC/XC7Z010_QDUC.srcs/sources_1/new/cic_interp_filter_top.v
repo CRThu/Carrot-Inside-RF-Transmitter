@@ -28,10 +28,10 @@ module cic_interp_filter_top
     parameter FILTER_M = 1  /* TODO:fixed M=1 */)(
     input reset_n,
     input clk_in,
-    input [DATA_IN_WIDTH-1:0] data_in,
+    input signed [DATA_IN_WIDTH-1:0] data_in,
     input data_in_valid,
     output data_in_ready,
-    output [DATA_OUT_WIDTH-1:0] data_out,
+    output signed [DATA_OUT_WIDTH-1:0] data_out,
     output data_out_valid
     );
     
@@ -48,8 +48,8 @@ module cic_interp_filter_top
     // --> Comb -> ... -> Comb --> ¡ÁR --> Int -> ... -> Int -->
     
     /* N Stages Comb */
-    wire [PATH_DATA_WIDTH-1:0] cic_comb_net [FILTER_N:0];
-    reg  [PATH_DATA_WIDTH-1:0] cic_comb_reg [FILTER_N-1:0];
+    wire signed [PATH_DATA_WIDTH-1:0] cic_comb_net [FILTER_N:0];
+    reg  signed [PATH_DATA_WIDTH-1:0] cic_comb_reg [FILTER_N-1:0];
     assign cic_comb_net[0] = data_in;
     genvar i;
     generate
@@ -69,8 +69,8 @@ module cic_interp_filter_top
     endgenerate
     
     /* Interpolation (¡ÁR) */
-    reg [$clog2(FILTER_R):0] cic_interp_cnt;
-    reg [PATH_DATA_WIDTH-1:0] cic_interp_r;
+    reg [$clog2(FILTER_R)-1:0] cic_interp_cnt;
+    reg signed [PATH_DATA_WIDTH-1:0] cic_interp_r;
     always@(posedge clk_in or negedge reset_n)
     begin
         if(!reset_n)
@@ -89,7 +89,7 @@ module cic_interp_filter_top
         end
         else if(data_in_valid & data_in_ready_r)
         begin
-            cic_interp_cnt <= FILTER_R;
+            cic_interp_cnt <= FILTER_R - 1;
             data_in_ready_r <= 1'b0;
             data_out_valid_r <= 1'b1;
             cic_interp_r <= cic_comb_net[FILTER_N];   // comb data out
@@ -104,8 +104,8 @@ module cic_interp_filter_top
     end
     
     /* N Stages Integrator */
-    wire [PATH_DATA_WIDTH-1:0] cic_int_net [FILTER_N:0];
-    reg  [PATH_DATA_WIDTH-1:0] cic_int_reg [FILTER_N-1:0];
+    wire signed [PATH_DATA_WIDTH-1:0] cic_int_net [FILTER_N:0];
+    reg  signed [PATH_DATA_WIDTH-1:0] cic_int_reg [FILTER_N-1:0];
     assign cic_int_net[0] = cic_interp_r;
     generate
         for(i=0;i<FILTER_N;i=i+1)
