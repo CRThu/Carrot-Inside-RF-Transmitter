@@ -10,7 +10,7 @@ addpath(genpath('./utility'));
 
 % Configure Filter .coe Path
 COE_PATH = './coe/';
-CICCOMP0_COE_OUT = 'cic_filter_comp_0.coe';
+CICCOMP0_COE_OUT = 'cic_comp_filter_0.coe';
 
 % Configure Filter .dat Path
 DATA_PATH = './data/';
@@ -125,8 +125,8 @@ end
 % Reference: https://ww2.mathworks.cn/help/dsp/ref/fdesign.ciccomp.html
 h_ciccomp = fdesign.ciccomp;
 set(h_ciccomp, 'NumberOfSections', CIC_N, 'DifferentialDelay', CIC_M);
-set(h_ciccomp, 'ap', 0.1, 'ast' , 40);
-set(h_ciccomp, 'fp', 0.5, 'fst' , 0.7);
+set(h_ciccomp, 'ap', 0.1, 'ast' , 10);
+set(h_ciccomp, 'fp', 0.5, 'fst' ,1);
 cicComp = design(h_ciccomp,'equiripple','SystemObject',true);
 ht_CIC_Comp = cicComp.Numerator;
 %fvtool(ht_CIC_Comp)
@@ -158,7 +158,7 @@ max_H1_dB = db(max(H1));
 figure(1);
 subplot(2,1,1);
 plot(w1.*CIC_R/pi,db(H1)-max_H1_dB,w2_ext/pi,db(H2_ext));
-axis([0 0.65 -10 7.5]);
+axis([0 1 -15 10]);
 grid on;
 ylabel('Normalized Magnitude (dB)');
 legend('CIC Interpolator','CIC Compensator');

@@ -36,7 +36,7 @@ module cic_interp_filter_top
     );
     
     /* Bout = Bin + N*log2(R*M) */
-    localparam PATH_DATA_WIDTH = DATA_IN_WIDTH+FILTER_N*$clog2(FILTER_R*FILTER_M);
+    localparam FILTER_DATA_WIDTH = DATA_IN_WIDTH+FILTER_N*$clog2(FILTER_R*FILTER_M);
     
     reg data_in_ready_r;
     reg data_out_valid_r;
@@ -48,8 +48,8 @@ module cic_interp_filter_top
     // --> Comb -> ... -> Comb --> ¡ÁR --> Int -> ... -> Int -->
     
     /* N Stages Comb */
-    wire signed [PATH_DATA_WIDTH-1:0] cic_comb_net [FILTER_N:0];
-    reg  signed [PATH_DATA_WIDTH-1:0] cic_comb_reg [FILTER_N-1:0];
+    wire signed [FILTER_DATA_WIDTH-1:0] cic_comb_net [FILTER_N:0];
+    reg  signed [FILTER_DATA_WIDTH-1:0] cic_comb_reg [FILTER_N-1:0];
     assign cic_comb_net[0] = data_in;
     genvar i;
     generate
@@ -70,7 +70,7 @@ module cic_interp_filter_top
     
     /* Interpolation (¡ÁR) */
     reg [$clog2(FILTER_R)-1:0] cic_interp_cnt;
-    reg signed [PATH_DATA_WIDTH-1:0] cic_interp_r;
+    reg signed [FILTER_DATA_WIDTH-1:0] cic_interp_r;
     always@(posedge clk_in or negedge reset_n)
     begin
         if(!reset_n)
@@ -104,8 +104,8 @@ module cic_interp_filter_top
     end
     
     /* N Stages Integrator */
-    wire signed [PATH_DATA_WIDTH-1:0] cic_int_net [FILTER_N:0];
-    reg  signed [PATH_DATA_WIDTH-1:0] cic_int_reg [FILTER_N-1:0];
+    wire signed [FILTER_DATA_WIDTH-1:0] cic_int_net [FILTER_N:0];
+    reg  signed [FILTER_DATA_WIDTH-1:0] cic_int_reg [FILTER_N-1:0];
     assign cic_int_net[0] = cic_interp_r;
     generate
         for(i=0;i<FILTER_N;i=i+1)
@@ -123,6 +123,6 @@ module cic_interp_filter_top
         end
     endgenerate
     
-    assign data_out = cic_int_net[FILTER_N][PATH_DATA_WIDTH-1:PATH_DATA_WIDTH-DATA_OUT_WIDTH];
+    assign data_out = cic_int_net[FILTER_N][FILTER_DATA_WIDTH-1:FILTER_DATA_WIDTH-DATA_OUT_WIDTH];
     
 endmodule
