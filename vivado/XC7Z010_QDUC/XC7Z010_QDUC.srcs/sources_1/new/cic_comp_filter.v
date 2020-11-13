@@ -61,7 +61,7 @@ module cic_comp_filter
         
         //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
         cic_comp_filter_0 cic_comp_filter_inst (
-          .aclk                 (aclk),             // input wire aclk
+          .aclk                 (clk_in),           // input wire aclk
           .s_axis_data_tvalid   (data_in_valid),    // input wire s_axis_data_tvalid
           .s_axis_data_tready   (data_in_ready),    // output wire s_axis_data_tready
           .s_axis_data_tdata    (data_in),          // input wire [31 : 0] s_axis_data_tdata

@@ -15,7 +15,7 @@ CICCOMP0_COE_OUT = 'cic_comp_filter_0.coe';
 % Configure Filter .dat Path
 DATA_PATH = './data/';
 TB_MEM_OUT = 'cic_filter_tb_mem.dat';
-COMP_TB_MEM_OUT = 'cic_comp_filter_tb_mem.dat';
+COMP_TB_MEM_OUT = 'cic_filter_comp_tb_mem.dat';
 COMP_TB_MEM_FIXED = 0.5;
 
 % COE width
@@ -142,14 +142,13 @@ sin_sum_quant = mod(power(2,16)+sin_sum(1:DISPLAY_LEN),power(2,16));
 fprintf(testvec_fid,'%04x\n',sin_sum_quant);
 fclose(testvec_fid);
 testvec_fid = fopen([DATA_PATH COMP_TB_MEM_OUT],'w');
-sin_sum_comp_in = floor(int_data_out(1:DISPLAY_LEN)./CIC_R.*COMP_TB_MEM_FIXED);
-sin_sum_comp_in_quant = mod(power(2,16)+sin_sum_comp_in(1:DISPLAY_LEN),power(2,16));
-fprintf(testvec_fid,'%04x\n',sin_sum_comp_in_quant);
+sin_sum_comp_quant = floor(int_data_out(1:DISPLAY_LEN)./CIC_R.*COMP_TB_MEM_FIXED);
+fprintf(testvec_fid,'%04x\n',sin_sum_comp_quant);
 fclose(testvec_fid);
 
 % cic comp filter
-sin_sum_comp_out = filter(ht_CIC_Comp,1,sin_sum_comp_in);
-sin_sum_comp_out = floor(sin_sum_comp_out);
+sin_sum_comp = filter(ht_CIC_Comp,1,int_data_out);
+sin_sum_comp = floor(sin_sum_comp);
 
 % Freq Response
 [H1,w1]=freqz(ht_CIC);
@@ -193,9 +192,9 @@ xlabel('Samples');
 
 f2=figure(3);
 subplot(2,1,1);
-stairs(sin_sum_comp_in(1:DISPLAY_LEN));
+stairs(sin_sum_comp_quant(1:DISPLAY_LEN));
 subplot(2,1,2);
-stairs(sin_sum_comp_out(1:DISPLAY_LEN));
+stairs(sin_sum_comp_quant(1:DISPLAY_LEN));
 
 % display test data
 fprintf('TEST DATA:\nRAW:');
@@ -204,10 +203,8 @@ fprintf('\nF1 :');
 fprintf('%7g,',comb_data_out(1:DISPLAY_LEN));
 fprintf('\nF2 :');
 fprintf('%7g,',int_data_out(1:DISPLAY_LEN*CIC_R));
-fprintf('\nCMPI:');
-fprintf('%7g,',sin_sum_comp_in(1:DISPLAY_LEN));
-fprintf('\nCMPO:');
-fprintf('%7g,',sin_sum_comp_out(1:DISPLAY_LEN));
+fprintf('\nCMP:');
+fprintf('%7g,',sin_sum_comp(1:DISPLAY_LEN*CIC_R));
 fprintf('\n');
 
 % Override Y Label
