@@ -8,6 +8,11 @@ close all
 % use functions in utility folder
 addpath(genpath('./utility'));
 
+% Configure Filter .dat Path
+DATA_PATH = './data/';
+I_TB_MEM_OUT = 'duc_i_tb_mem.dat';
+Q_TB_MEM_OUT = 'duc_q_tb_mem.dat';
+
 % NCO signal
 nco_width = 16;
 nco_fs = 300000000; % MCLK = 300MHz
@@ -24,10 +29,20 @@ nco_cosout = floor(nco_a*cos(2*pi*nco_f*nco_t));
 QAM_width = 16;
 QAM_SYMBOL_RATE = 7500000;   % symbol rate = 7.5MHz
 QAM16_A = sqrt(10)/10;
-QAM_DATA_I = power(2,QAM_width-1).*[1 -1 3 3 -3 -3 1].*QAM16_A;
-QAM_DATA_Q = power(2,QAM_width-1).*[1 3 1 -3 -1 3 -1].*QAM16_A;
+QAM_DATA_I = floor(power(2,QAM_width-1).*[1 -1 3 3 -3 -3 1].*QAM16_A);
+QAM_DATA_Q = floor(power(2,QAM_width-1).*[1 3 1 -3 -1 3 -1].*QAM16_A);
 QAM_t_sample_I = QAM_DATA_I(mod(floor(nco_t.*QAM_SYMBOL_RATE),length(QAM_DATA_I))+1);
 QAM_t_sample_Q = QAM_DATA_Q(mod(floor(nco_t.*QAM_SYMBOL_RATE),length(QAM_DATA_Q))+1);
+
+% write vector for testbench
+testvec_fid = fopen([DATA_PATH I_TB_MEM_OUT],'w');
+QAM_DATA_I_quant = mod(power(2,16)+QAM_DATA_I,power(2,16));
+fprintf(testvec_fid,'%04x\n',QAM_DATA_I_quant);
+fclose(testvec_fid);
+testvec_fid = fopen([DATA_PATH Q_TB_MEM_OUT],'w');
+QAM_DATA_Q_quant = mod(power(2,16)+QAM_DATA_Q,power(2,16));
+fprintf(testvec_fid,'%04x\n',QAM_DATA_Q_quant);
+fclose(testvec_fid);
 
 % s(t)
 truncate_width = 16;
